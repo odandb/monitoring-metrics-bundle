@@ -1,0 +1,3 @@
+person_list:
+    path: /person
+    controller: Odandb\MonitoringMetricsBundle\Tests\Fixtures\Controller\TestController::personList

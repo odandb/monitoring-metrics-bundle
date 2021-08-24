@@ -1,0 +1,42 @@
+imports:
+    - { resource: services.yaml }
+
+framework:
+    annotations:
+        enabled: true
+    secret: '123456789'
+    router:
+        utf8: true
+        resource: '%kernel.project_dir%/routing.yaml'
+        strict_requirements: ~
+    test: ~
+    profiler:
+        collect: false
+    cache:
+        pools:
+            doctrine.result_cache_pool:
+                adapter: cache.app
+            doctrine.system_cache_pool:
+                adapter: cache.system
+
+doctrine:
+    dbal:
+        driver: pdo_sqlite
+        path: '%kernel.project_dir%/data.sqlite'
+
+    orm:
+        auto_generate_proxy_classes: '%kernel.debug%'
+        naming_strategy: doctrine.orm.naming_strategy.underscore_number_aware
+        auto_mapping: true
+        mappings:
+            fixture:
+                type: annotation
+                prefix: Odandb\MonitoringMetricsBundle\Tests\Fixtures\Entity\
+                dir: '%kernel.project_dir%/Entity'
+                is_bundle: false
+        query_cache_driver:
+            type: pool
+            pool: doctrine.system_cache_pool
+        result_cache_driver:
+            type: pool
+            pool: doctrine.result_cache_pool

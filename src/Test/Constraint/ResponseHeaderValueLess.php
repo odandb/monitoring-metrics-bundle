@@ -42,7 +42,7 @@ final class ResponseHeaderValueLess extends Constraint
      */
     protected function matches($response): bool
     {
-        return $this->expectedValue <= $response->headers->get($this->headerName);
+        return $this->expectedValue >= $response->headers->get($this->headerName);
     }
 
     /**

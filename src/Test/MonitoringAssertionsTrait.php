@@ -16,27 +16,30 @@ use Symfony\Component\HttpFoundation\Test\Constraint as ResponseConstraint;
  */
 trait MonitoringAssertionsTrait
 {
-    public static function assertQueryCountMatches(string $expectedValue, string $message = ''): void
+    public static function assertQueryCountMatches(int $value, string $message = ''): void
     {
         self::assertThatForResponse(LogicalAnd::fromConstraints(
             new ResponseConstraint\ResponseHasHeader(DoctrineMetric::HEADER_NAME),
-            new ResponseConstraint\ResponseHeaderSame(DoctrineMetric::HEADER_NAME, $expectedValue)
+            new ResponseConstraint\ResponseHeaderSame(DoctrineMetric::HEADER_NAME, (string) $value)
         ), $message);
     }
 
-    public static function assertQueryCountLessThan(string $value, string $message = ''): void
+    public static function assertQueryCountLessThan(int $value, string $message = ''): void
     {
         self::assertThatForResponse(LogicalAnd::fromConstraints(
             new ResponseConstraint\ResponseHasHeader(DoctrineMetric::HEADER_NAME),
-            new ResponseHeaderValueLess(DoctrineMetric::HEADER_NAME, $value)
+            new ResponseHeaderValueLess(DoctrineMetric::HEADER_NAME, (string) $value)
         ), $message);
     }
 
-    public static function assertMemoryUsageLessThan(string $value, string $message = ''): void
+    /**
+     * @param int|float $value Value in Mb
+     */
+    public static function assertMemoryUsageLessThan($value, string $message = ''): void
     {
         self::assertThatForResponse(LogicalAnd::fromConstraints(
             new ResponseConstraint\ResponseHasHeader(MemoryMetric::HEADER_NAME),
-            new ResponseHeaderValueLess(MemoryMetric::HEADER_NAME, $value)
+            new ResponseHeaderValueLess(MemoryMetric::HEADER_NAME, (string) $value)
         ), $message);
     }
 }

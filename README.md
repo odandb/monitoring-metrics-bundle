@@ -56,9 +56,9 @@ class FooTest extends WebTestCase
         self::assertResponseIsSuccessful();
         
         // available assertions/methods
-        self::assertQueryCountMatches('5'); // query doctrine should be exactly 5.
-        self::assertQueryCountLessThan('5'); // query doctrine should be less than 5
-        self::assertMemoryUsageLessThan('10.4'); // the memory used should be less than 10.4mb
+        self::assertQueryCountMatches(5); // query doctrine should be exactly 5.
+        self::assertQueryCountLessThan(5); // query doctrine should be less than 5
+        self::assertMemoryUsageLessThan(10.4); // the memory used should be less than 10.4mb
     }
 }
 ```
