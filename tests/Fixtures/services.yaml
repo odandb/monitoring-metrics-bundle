@@ -1,8 +1,12 @@
 services:
     _defaults:
         autowire: true
-        autoconfigure: trues
+        autoconfigure: true
 
     Odandb\MonitoringMetricsBundle\Tests\Fixtures\Controller\:
         resource: 'Controller'
         tags: ['controller.service_arguments']
+
+    Odandb\MonitoringMetricsBundle\Tests\Fixtures\Metric\:
+        resource: 'Metric'
+        tags: ['monitoring.metric']
