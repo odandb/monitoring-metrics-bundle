@@ -63,8 +63,6 @@ class FooTest extends WebTestCase
 }
 ```
 
-Note: By default, profiling uses the debug value of the application
-
 ## Metric
 
 ### Doctrine
