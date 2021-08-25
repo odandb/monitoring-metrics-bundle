@@ -63,9 +63,18 @@ class FooTest extends WebTestCase
 }
 ```
 
+Note: By default, profiling uses the debug value of the application
+
 ## Metric
 
-TODO
+### Doctrine
+
+The [DoctrineMetric](./src/Metric/DoctrineMetric.php) collects information via the profiling logger and must be enabled via the debug value of the application. Alternatively, you can also enable it on the `dbal.profiling` or `dbal.connections.default.profiling` (multiple connections) configuration for the environment whose information you want to collect.
+The configuration on the connection may be more interesting to avoid activating all the debug features on the environment and avoid slowdowns.
+
+### Memory
+
+The [MemoryMetric](./src/Metric/MemoryMetric.php) collects information via `memory_get_peak_usage` from native php and convert to Mb.
 
 ## Create your own metric
 
