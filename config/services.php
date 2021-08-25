@@ -7,6 +7,7 @@ use Odandb\MonitoringMetricsBundle\Metric\AbstractMetric;
 use Odandb\MonitoringMetricsBundle\Metric\DoctrineMetric;
 use Odandb\MonitoringMetricsBundle\Metric\MemoryMetric;
 use Odandb\MonitoringMetricsBundle\Metric\MetricRegistry;
+use Symfony\Component\DependencyInjection\Reference;
 
 return static function (ContainerConfigurator $container) {
     $container->services()
@@ -22,7 +23,7 @@ return static function (ContainerConfigurator $container) {
 
         ->set('monitoring.listener', MonitoringListener::class)
             ->args([
-                service('monitoring.metrics'),
+                new Reference('monitoring.metrics'),
             ])
             ->tag('kernel.event_subscriber')
     ;
