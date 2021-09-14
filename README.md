@@ -13,6 +13,19 @@ It collects the following metrics :
 
 ### Step 1: Download the Bundle
 
+Add this repositories section on your composer.json project.
+
+```composer
+"repositories": [
+    {
+        "type": "vcs",
+        "url": "git@dev.odandb.com:odandb/monitoring-metrics-bundle.git"
+    }
+],
+```
+
+And run 
+
 ```console
 composer require odandb/monitoring-metrics-bundle --dev
 ```
