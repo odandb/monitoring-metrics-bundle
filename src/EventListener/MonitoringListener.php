@@ -11,7 +11,7 @@ use Symfony\Component\HttpKernel\KernelEvents;
 
 class MonitoringListener implements EventSubscriberInterface
 {
-    protected $metricRegistry;
+    protected MetricRegistry $metricRegistry;
 
     public function __construct(MetricRegistry $metricRegistry)
     {
