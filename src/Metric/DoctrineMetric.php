@@ -14,7 +14,7 @@ class DoctrineMetric extends AbstractMetric
     /**
      * @var DebugStack[]
      */
-    private $loggers = [];
+    private array $loggers = [];
 
     /**
      * Adds the stack logger for a connection.
@@ -35,7 +35,7 @@ class DoctrineMetric extends AbstractMetric
             $queries[$name] += count($logger->queries);
         }
 
-        $response->headers->set(self::HEADER_NAME, array_sum($queries));
+        $response->headers->set(self::HEADER_NAME, (string) array_sum($queries));
     }
 
     public function reset(): void

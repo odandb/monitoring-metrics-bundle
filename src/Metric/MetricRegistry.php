@@ -12,7 +12,7 @@ class MetricRegistry implements ResetInterface
     /**
      * @var AbstractMetric[]
      */
-    protected $registry = [];
+    protected array $registry = [];
 
     public function addMetric(AbstractMetric $metric): void
     {

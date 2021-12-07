@@ -13,7 +13,7 @@ class MemoryMetric extends AbstractMetric
 
     public function metric(Response $response): void
     {
-        $response->headers->set(self::HEADER_NAME, memory_get_peak_usage(true) / 1024 / 1024);
+        $response->headers->set(self::HEADER_NAME, (string) (memory_get_peak_usage(true) / 1024 / 1024));
     }
 
     public function reset(): void

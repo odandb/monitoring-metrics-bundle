@@ -10,10 +10,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 
 class TestController
 {
-    /**
-     * @var EntityManagerInterface
-     */
-    private $em;
+    private EntityManagerInterface $em;
 
     public function __construct(EntityManagerInterface $em)
     {
