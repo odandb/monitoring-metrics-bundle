@@ -24,7 +24,7 @@
         "symfony/dependency-injection": "^4.4|^5.1|^6.0",
         "symfony/event-dispatcher": "^4.4|^5.1|^6.0",
         "symfony/framework-bundle": "^4.4|^5.1|^6.0",
-        "symfony/http-kernel": "^4.4|^5.1|^6.0"
+        "symfony/http-kernel": "^4.4|^5.2|^6.0"
     },
     "conflict": {
         "phpunit/phpunit": "<8.0"
