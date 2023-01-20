@@ -5,6 +5,7 @@ framework:
     annotations:
         enabled: true
     secret: '123456789'
+    http_method_override: false
     router:
         utf8: true
         resource: '%kernel.project_dir%/routing.yaml'

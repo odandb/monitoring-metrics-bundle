@@ -17,6 +17,9 @@ return static function (ContainerConfigurator $container) {
         ->set('monitoring.metrics', MetricRegistry::class)
 
         ->set('monitoring.metric.doctrine', DoctrineMetric::class)
+            ->args([
+                service('doctrine.debug_data_holder')->nullOnInvalid()
+            ])
             ->tag('monitoring.metric')
         ->set('monitoring.metric.memory', MemoryMetric::class)
             ->tag('monitoring.metric')

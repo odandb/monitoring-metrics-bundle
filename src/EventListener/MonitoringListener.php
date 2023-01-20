@@ -21,7 +21,7 @@ class MonitoringListener implements EventSubscriberInterface
     public function onKernelResponse(ResponseEvent $event): void
     {
         $route = $event->getRequest()->attributes->get('_route');
-        if (null === $route || strpos($route, '_') === 0) {
+        if (null === $route || str_starts_with($route, '_')) {
             return;
         }
 

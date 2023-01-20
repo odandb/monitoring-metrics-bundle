@@ -16,6 +16,11 @@ class AddDoctrineLoggerPass implements CompilerPassInterface
             return;
         }
 
+        // With DebugDataHolder, no need to use logger
+        if ($container->has('doctrine.debug_data_holder')) {
+            return;
+        }
+
         $definition = $container->getDefinition('monitoring.metric.doctrine');
 
         $connections = $container->getParameter('doctrine.connections');
