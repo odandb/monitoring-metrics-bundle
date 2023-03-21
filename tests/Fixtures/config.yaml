@@ -2,8 +2,6 @@ imports:
     - { resource: services.yaml }
 
 framework:
-    annotations:
-        enabled: true
     secret: '123456789'
     http_method_override: false
     router:
@@ -26,12 +24,12 @@ doctrine:
         path: '%kernel.project_dir%/data.sqlite'
 
     orm:
-        auto_generate_proxy_classes: '%kernel.debug%'
+        auto_generate_proxy_classes: true
+        enable_lazy_ghost_objects: true
         naming_strategy: doctrine.orm.naming_strategy.underscore_number_aware
         auto_mapping: true
         mappings:
             fixture:
-                type: annotation
                 prefix: Odandb\MonitoringMetricsBundle\Tests\Fixtures\Entity\
                 dir: '%kernel.project_dir%/Entity'
                 is_bundle: false

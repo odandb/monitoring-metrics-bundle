@@ -5,35 +5,25 @@ declare(strict_types=1);
 namespace Odandb\MonitoringMetricsBundle\Tests\Fixtures\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Entity
- */
+#[ORM\Entity]
 class Team
 {
-    /**
-     * @var int
-     *
-     * @ORM\Column(type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $id;
+    #[ORM\Id]
+    #[ORM\Column(type: 'integer', nullable: false)]
+    #[ORM\GeneratedValue(strategy: 'IDENTITY')]
+    private ?int $id = null;
+
+    #[ORM\Column(type: 'string', nullable: false)]
+    private string $name;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(type="string", nullable=false)
+     * @var ArrayCollection<int, Person>
      */
-    private $name;
-
-    /**
-     * @var Person[]|ArrayCollection
-     *
-     * @ORM\OneToMany(targetEntity=Person::class, mappedBy="team")
-     */
-    private $persons;
+    #[ORM\OneToMany(mappedBy: 'team', targetEntity: Person::class)]
+    private Collection $persons;
 
     public function __construct(string $name)
     {
@@ -52,7 +42,7 @@ class Team
     }
 
     /**
-     * @return Person[]|ArrayCollection
+     * @return ArrayCollection<int, Person>
      */
     public function getPersons(): ArrayCollection
     {
