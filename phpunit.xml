@@ -2,10 +2,8 @@
 
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
-         backupGlobals="false"
          bootstrap="tests/phpunit-bootstrap.php"
          colors="true"
-         convertDeprecationsToExceptions="false"
          verbose="true" >
 
     <php>
@@ -15,12 +13,12 @@
         <server name="APP_ENV" value="test" force="true" />
         <server name="APP_DEBUG" value="1" force="true" />
         <server name="SHELL_VERBOSITY" value="-1" />
-        <server name="SYMFONY_DEPRECATIONS_HELPER" value="max[self]=0" />
+        <server name="SYMFONY_DEPRECATIONS_HELPER" value="max[total]=30&amp;max[self]=0" />
     </php>
 
     <testsuites>
         <testsuite name="MonitoringMetricsBundle test suite">
-            <directory suffix="Test.php">./tests/Functional</directory>
+            <directory>./tests/Functional</directory>
         </testsuite>
     </testsuites>
 

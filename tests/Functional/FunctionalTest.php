@@ -13,8 +13,7 @@ class FunctionalTest extends WebTestCase
 {
     use MonitoringAssertionsTrait;
 
-    /** @var KernelBrowser */
-    protected $client;
+    protected ?KernelBrowser $client;
 
     protected function setUp() : void
     {

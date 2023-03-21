@@ -6,40 +6,22 @@ namespace Odandb\MonitoringMetricsBundle\Tests\Fixtures\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Entity
- */
+#[ORM\Entity]
 class Person
 {
-    /**
-     * @var int
-     *
-     * @ORM\Column(type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $id;
+    #[ORM\Id]
+    #[ORM\Column(type: 'integer', nullable: false)]
+    #[ORM\GeneratedValue(strategy: 'IDENTITY')]
+    private ?int $id = null;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", nullable=false)
-     */
-    private $firstName;
+    #[ORM\Column(type: 'string', nullable: false)]
+    private string $firstName;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", nullable=false)
-     */
-    private $lastName;
+    #[ORM\Column(type: 'string', nullable: false)]
+    private string $lastName;
 
-    /**
-     * @var Team
-     *
-     * @ORM\ManyToOne(targetEntity=Team::class, inversedBy="persons", fetch="LAZY")
-     */
-    private $team;
+    #[ORM\ManyToOne(targetEntity: Team::class, fetch: 'LAZY', inversedBy: 'persons')]
+    private Team $team;
 
     public function __construct(string $firstName, string $lastName, Team $team)
     {
@@ -48,7 +30,7 @@ class Person
         $this->team = $team;
     }
 
-    public function getId(): int
+    public function getId(): ?int
     {
         return $this->id;
     }
