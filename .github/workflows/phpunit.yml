@@ -8,9 +8,6 @@ concurrency:
     group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
     cancel-in-progress: true
 
-permissions:
-    contents: read
-
 jobs:
 
     test:
@@ -23,25 +20,25 @@ jobs:
             matrix:
                 include:
                     # Lowest Deps
-                    - php: 7.4
+                    - php: 8.0
                       symfony: 5.4.*
                       coverage: 'none'
                       composer-flags: '--prefer-stable --prefer-lowest'
                       can-fail: false
                     # LTS with latest stable PHP
-                    - php: 8.2
+                    - php: latest
                       symfony: 5.4.*
                       coverage: 'none'
                       composer-flags: '--prefer-stable'
                       can-fail: false
                     # Active release
-                    - php: 8.2
+                    - php: latest
                       symfony: 6.2.*
                       coverage: pcov
                       composer-flags: '--prefer-stable'
                       can-fail: false
                     # Development release
-                    - php: 8.3
+                    - php: nightly
                       symfony: 6.3.*@dev
                       coverage: 'none'
                       composer-flags: ''
@@ -49,7 +46,7 @@ jobs:
 
         steps:
             - name: Checkout
-              uses: action/checkout@v3
+              uses: actions/checkout@v3
               with:
                 fetch-depth: 2
 
